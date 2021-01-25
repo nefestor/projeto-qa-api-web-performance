@@ -13,3 +13,11 @@
 
 #### Cadastrando 5 Usuários
 ![Recordit GIF](http://g.recordit.co/VeLvVmYSmz.gif)
+
+Pendente:
+
+* Faça a venda de 1 dog e 1 cat para cada usuário
+
+* Mude o status das ordens de venda de dogs para "delivered" e de cats para "approved"
+
+* Consulte as ordens geradas e valide se estão corretas
