@@ -1,0 +1,52 @@
+
+[
+    {
+        "id": "1",
+        "username": "Tiago",
+        "firstName": "Tiago",
+        "lastName": "Coelho",
+        "email": "nefestor@outlook.com",
+        "password": "0123",
+        "phone": "43996685744",
+        "userStatus": 0
+    },
+    {
+        "id": "2",
+        "username": "Teste",
+        "firstName": "Teste",
+        "lastName": "Itau",
+        "email": "teste@itau.com",
+        "password": "0123",
+        "phone": "11987654321",
+        "userStatus": 0
+    },
+    {
+        "id": "3",
+        "username": "Testando",
+        "firstName": "Testando",
+        "lastName": "Itau",
+        "email": "testando@itau.com",
+        "password": "0123",
+        "phone": "11987654322",
+        "userStatus": 0
+    },
+    {
+        "id": "4",
+        "username": "Foo",
+        "firstName": "Foo",
+        "lastName": "Fu",
+        "email": "foo@email.com",
+        "password": "0123",
+        "phone": "11987654323",
+        "userStatus": 0
+    },
+    {
+        "id": "5",
+        "username": "Bar",
+        "firstName": "Bar",
+        "lastName": "B",
+        "email": "bar@email.com",
+        "password": "0123",
+        "phone": "11987654324",
+        "userStatus": 0
+}]

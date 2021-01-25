@@ -1,0 +1,92 @@
+[
+    {
+        "id": "1",
+        "category": {
+            "id": "1",
+            "name": "dog"
+        },
+        "name": "Cachorro_1",
+        "status": "available"
+    },
+    {
+        "id": "2",
+        "category": {
+            "id": "1",
+            "name": "dog"
+        },
+        "name": "Cachorro_2",
+        "status": "available"
+    },
+    {
+        "id": "3",
+        "category": {
+            "id": "1",
+            "name": "dog"
+        },
+        "name": "Cachorro_3",
+        "status": "available"
+    },
+    {
+        "id": "4",
+        "category": {
+            "id": "1",
+            "name": "dog"
+        },
+        "name": "Cachorro_4",
+        "status": "available"
+    },
+    {
+        "id": "5",
+        "category": {
+            "id": "1",
+            "name": "dog"
+        },
+        "name": "Cachorro_5",
+        "status": "available"
+    },
+    {
+        "id": "6",
+        "category": {
+            "id": "2",
+            "name": "cat"
+        },
+        "name": "Gato_1",
+        "status": "available"
+    },
+    {
+        "id": "7",
+        "category": {
+            "id": "2",
+            "name": "cat"
+        },
+        "name": "Gato_2",
+        "status": "available"
+    },
+    {
+        "id": "8",
+        "category": {
+            "id": "2",
+            "name": "cat"
+        },
+        "name": "Gato_3",
+        "status": "available"
+    },
+    {
+        "id": "9",
+        "category": {
+            "id": "2",
+            "name": "cat"
+        },
+        "name": "Gato_4",
+        "status": "available"
+    },
+    {
+        "id": "10",
+        "category": {
+            "id": "2",
+            "name": "cat"
+        },
+        "name": "Gato_5",
+        "status": "available"
+    }
+]

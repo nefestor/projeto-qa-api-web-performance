@@ -1,0 +1,435 @@
+{
+	"info": {
+		"_postman_id": "189dbb16-faaf-4c77-8020-d23af720578f",
+		"name": "PetStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PetStore Simples",
+			"item": [
+				{
+					"name": "Store",
+					"item": [
+						{
+							"name": "Cria ordem de venda do Brutus",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c3d3de2c-0b90-475a-ad0f-047eef6be8f0",
+										"exec": [
+											"pm.test(\"Verifica se a ordem de venda do pet é o Brutus\", () => {\r",
+											"  const responseJson = pm.response.json();\r",
+											"  pm.expect(responseJson.petId).to.eql(pm.environment.get(\"pet\"));\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verificar se o código de status da requisição é 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 1,\r\n  \"petId\": {{pet}},\r\n  \"quantity\": 1,\r\n  \"shipDate\": \"2021-01-24T19:54:46.357Z\",\r\n  \"status\": \"delivered\",\r\n  \"complete\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://petstore.swagger.io/v2/store/order",
+									"protocol": "https",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"store",
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Valida a ordem gerada",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0329010f-fe15-4dec-9fea-89511eaa37c3",
+										"exec": [
+											"pm.test(\"Verifica se a ordem de venda do pet é o Brutus\", () => {\r",
+											"  const responseJson = pm.response.json();\r",
+											"  pm.expect(responseJson.petId).to.eql(pm.environment.get(\"pet\"));\r",
+											"});\r",
+											"pm.test(\"Verifica o status da ordem é 'delivered'\", () => {\r",
+											"  const responseJson = pm.response.json();\r",
+											"  pm.expect(responseJson.status).to.eql(\"delivered\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verificar se o código de status da requisição é 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://petstore.swagger.io/v2/store/order/1",
+									"protocol": "https",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"store",
+										"order",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Cria a usuária Maria Assunção",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "135de6bc-9aff-4a2a-a458-921ad8931548",
+										"exec": [
+											"pm.test(\"Verificar se o código de status da requisição é 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": null,\r\n  \"username\": \"Maria\",\r\n  \"firstName\": \"Maria\",\r\n  \"lastName\": \"Assunção\",\r\n  \"email\": \"maria@email.com\",\r\n  \"password\": \"0123\",\r\n  \"phone\": \"11987654321\",\r\n  \"userStatus\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://petstore.swagger.io/v2/user",
+									"protocol": "https",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verifica se usuária Maria Assunção foi cadastrada",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "120d3b00-1be1-4c93-b9ba-e4f779373fa3",
+										"exec": [
+											"pm.test(\"Função que seta o ID do User\", function() {\r",
+											"    var response = pm.response.json();\r",
+											"    pm.environment.set(\"user\", response.id);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verifica se a usuária cadastrada é Maria Assunção\", () => {\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.firstName).to.eql(\"Maria\");\r",
+											"    pm.expect(responseJson.lastName).to.eql(\"Assunção\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://petstore.swagger.io/v2/user/Maria",
+									"protocol": "https",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"user",
+										"Maria"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Pet",
+					"item": [
+						{
+							"name": "Cria o pet Brutus (dog)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9579b9f1-d62c-43c5-be2a-529707134834",
+										"exec": [
+											"pm.test(\"Verifica se o pet cadastrado é o Brutus\", () => {\r",
+											"  const responseJson = pm.response.json();\r",
+											"  pm.expect(responseJson.name).to.eql(\"Brutus\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verifica se o pet cadastrado é o do tipo 'dog'\", () => {\r",
+											"  const responseJson = pm.response.json();\r",
+											"  pm.expect(responseJson.category.name).to.eql(\"dog\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verificar se o código de status da requisição é 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Seta o ID do pet\", function() {\r",
+											"    var response = pm.response.json();\r",
+											"\r",
+											"    pm.environment.set(\"pet\", response.id);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\r\n        \"id\": null,\r\n        \"category\": {\r\n            \"id\": null,\r\n            \"name\": \"dog\"\r\n        },\r\n        \"name\": \"Brutus\",\r\n        \"photoUrls\": [\r\n            \"string\"\r\n        ],\r\n        \"tags\": [\r\n            {\r\n                \"id\": null,\r\n                \"name\": \"string\"\r\n            }\r\n        ],\r\n        \"status\": \"available\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://petstore.swagger.io/v2/pet",
+									"protocol": "https",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Altera Status para Delivered",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c8bd467a-d47b-46de-a09a-60d13ede5428",
+										"exec": [
+											"pm.test(\"Verificar se o código de status da requisição é 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "status",
+											"value": "delivered",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://petstore.swagger.io/v2/pet/{{pet}}",
+									"protocol": "https",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet",
+										"{{pet}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "PetStore com Massa de Teste",
+			"item": [
+				{
+					"name": "Cadastra 10 Pets",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "79e5ea96-535a-4234-bcd6-e18ee35e87d3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"id\": \"{{id}}\",\r\n    \"category\": {\r\n        \"id\": \"{{id}}\",\r\n        \"name\": \"{{name}}\"\r\n    },\r\n    \"name\": \"{{name}}\",\r\n    \"status\": \"{{status}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastra 5 Usuários",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6b4cfb21-0bd9-4891-8f3d-a613957387e2",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "045126d8-6deb-47f8-a390-614cb3ed2ec2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{{id}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"firstName\": \"{{firstName}}\",\r\n    \"lastName\": \"{{lastName}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"userStatus\": \"{{userStatus}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/user",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
