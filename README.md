@@ -1,5 +1,3 @@
-# Exercicios Práticos Iterasys
-
 
 ### Relatório de execução da Collection no Postman - Exércicios simples 
 
